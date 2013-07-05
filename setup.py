@@ -1,4 +1,5 @@
 from distutils.core import setup
+from setuptools import find_packages
 
 setup(
     name='django-phrase',
@@ -10,7 +11,7 @@ setup(
     url='https://github.com/phrase/django-phrase',
     download_url='https://github.com/phrase/django-phrase',
     license='BSD',
-    packages=('phrase', 'phrase.templatetags'),
+    packages=find_packages(),
     classifiers=[
         'Development Status :: 1 - Planning',
         'Environment :: Web Environment',
