@@ -10,7 +10,7 @@ setup(
     url='https://github.com/phrase/django-phrase',
     download_url='https://github.com/phrase/django-phrase',
     license='BSD',
-    packages=('django-phrase'),
+    packages=('phrase', 'phrase.templatetags'),
     classifiers=[
         'Development Status :: 1 - Planning',
         'Environment :: Web Environment',
