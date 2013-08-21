@@ -28,7 +28,7 @@ class Command(BaseCommand):
             if method == "GET":
                 request = urllib2.Request("https://phraseapp.com/api/v1/" + endpoint + "?" + urllib.urlencode(params))
             else:
-                request = urllib2.Request("https://phraseapp.com/api/v1/" + endpoint, data=json.dumps(params))
+                request = urllib2.Request("https://phraseapp.com/api/v1/" + endpoint, data=urllib.urlencode(params))
             response = urllib2.urlopen(request)
             if needs_decoding:
                 return json.loads(response.read())
