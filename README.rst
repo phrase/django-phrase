@@ -33,16 +33,38 @@ And add phrase to the list of installed apps::
         'phrase',
     )
 
+Usage for In-Context Translation
+----------------------------------------
+
 You can now use the ``phrase_i18n`` template tag in your templates::
 
     {% load phrase_i18n %}
 
-Note: You have to load ``phrase_i18n`` *after* you load ``ì18n`` in order to let phrase override the translation methods. 
+Note: You have to load ``phrase_i18n`` *after* you load ``ì18n`` in order to let phrase override the translation methods.
 
 Last step: add the javascript snippet to your base layout file with the folling tag. This should go inside the ``<head>`` section of your template file::
 
     {% phrase_javascript %}
 
+
+Usage for Production % Continuous Integration Environments
+---------------
+
+In production or continuous integration environments the In-Context facility are not suitable, instead the app provides two management commands, 
+allowing you the sync the keys found in the app with PhraseApp and downloading & compiling existing translations from PhraseApp.
+
+*********************
+./manage.py sync_keys
+*********************
+
+Allows you to sync the keys found in the app with the PhraseApp translation key database. It uses the same logic as ``makemessages`` to locate all keys 
+in your app (and therefore takes the same parameters). By providing the `-p` option it will only add new keys to PhraseApp while without it obsolete keys will be removed.
+
+*****************************
+./manage.py pull_translations
+*****************************
+
+Allows you to download and compile (by passing the `-c` option) translations from PhraseApp and make them readily available to your app.
 
 Configuration
 -------------
