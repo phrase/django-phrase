@@ -34,7 +34,7 @@ And add phrase to the list of installed apps::
     )
 
 Usage for In-Context Translation
-----------------------------------------
+--------------------------------
 
 You can now use the ``phrase_i18n`` template tag in your templates::
 
@@ -47,8 +47,8 @@ Last step: add the javascript snippet to your base layout file with the folling 
     {% phrase_javascript %}
 
 
-Usage for Production % Continuous Integration Environments
----------------
+Usage for Production & Continuous Integration Environments
+----------------------------------------------------------
 
 In production or continuous integration environments the In-Context facility are not suitable, instead the app provides two management commands, 
 allowing you the sync the keys found in the app with PhraseApp and downloading & compiling existing translations from PhraseApp.
