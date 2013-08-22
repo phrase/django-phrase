@@ -63,7 +63,8 @@ class Command(BaseCommand):
 
         # store it
         with open(os.path.join(locale_folder, "django.po"), "w+") as gettext_file:
-            gettext_file.write(data)
+            gettext_file.write(data.encode("utf-8"))
+
 
     def handle(self, *args, **options):
         project_locales = [locale['code'] for locale in self._make_request("locales")]
