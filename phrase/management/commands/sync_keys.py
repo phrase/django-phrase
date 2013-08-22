@@ -127,9 +127,11 @@ class Command(BaseCommand):
 
         blocks_drawn = 0
         elements_done = 0
+        elements_worked = 0
         for element in data_list:
 
-            element_func(element)
+            if element_func(element):
+                elements_worked = elements_worked + 1
 
             elements_done = elements_done + 1
 
@@ -139,6 +141,8 @@ class Command(BaseCommand):
                 blocks_drawn = blocks_drawn + 1
 
         sys.stdout.write("\n")
+
+        return elements_worked
 
     @staticmethod
     def _process_file(file_name, dir_path, domain, extensions):
@@ -252,13 +256,14 @@ class Command(BaseCommand):
         # upload new keys
         sys.stdout.write("Creating new keys in PhraseApp\n")
 
-        new_keys = 0
         def process_new_key(key):
             if not key in pa_key_names:
                 # new key -> create it
                 Command._make_request("translations/store", data={'locale': pa_locale, 'key': key}, method="POST")
-                new_keys = new_keys + 1
-        Command._progress_bar(local_key_names, process_new_key)
+                return True
+            else:
+                return False
+        new_keys = Command._progress_bar(local_key_names, process_new_key)
         sys.stdout.write("Created %d new keys in PhraseApp\n" % new_keys)
 
         # if not disabled, delete obsolete keys
@@ -270,15 +275,14 @@ class Command(BaseCommand):
 
             sys.stdout.write("Removing obsolete keys from PhraseApp\n")
 
-            old_keys = 0
             def process_old_key(key):
                 if not key in local_key_names:
                     # obsolete key -> delete it
-                    print pa_key_name_id_map[key]
                     Command._make_request("translation_keys/%d" % pa_key_name_id_map[key], method="DELETE", user_auth_token=session_info['auth_token'])
-                    print "-"
-                    old_keys = old_keys + 1
-            Command._progress_bar(pa_key_names, process_old_key)
+                    return True
+                else:
+                    return False
+            old_keys = Command._progress_bar(pa_key_names, process_old_key)
 
             # end user session
             Command._make_request("sessions", method="DELETE", user_auth_token=session_info['auth_token'])
