@@ -243,7 +243,7 @@ class Command(BaseCommand):
             try:
                 local_key_names.update(Command._process_file(file_name, dir_path, domain=domain, extensions=extensions))
             except UnicodeDecodeError:
-                sys.stdout.write("UnicodeDecodeError: skipped file %s in %s" % (file, dirpath))
+                sys.stdout.write("UnicodeDecodeError: skipped file %s in %s" % (file_name, dir_path))
 
         sys.stdout.write("Found %d local keys\n" % len(local_key_names))
 
