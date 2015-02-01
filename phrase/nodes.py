@@ -1,5 +1,8 @@
 from django.template import (Node, Variable, TemplateSyntaxError, TokenParser, Library, TOKEN_TEXT, TOKEN_VAR)
-from django.template.base import render_value_in_context
+try:
+    from django.template.base import render_value_in_context
+except ImportError:
+    from django.template.base import _render_value_in_context as render_value_in_context
 from django.utils import six
 from django.conf import settings
 
