@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 setup(
     name='django-phrase',
-    version='0.0.1',
+    version='0.0.3',
     description='Connect your Django apps to PhraseApp, the powerful in-context-translation solution.',
     long_description=open('README.rst').read(),
     author='Manuel Boy',
