@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 setup(
     name='django-phrase',
-    version='0.0.3',
+    version='1.0.0',
     description='Connect your Django apps to PhraseApp, the powerful in-context-translation solution.',
     long_description=open('README.rst').read(),
     author='Manuel Boy',
@@ -13,7 +13,6 @@ setup(
     license='BSD',
     packages=find_packages(),
     classifiers=[
-        'Development Status :: 1 - Planning',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
