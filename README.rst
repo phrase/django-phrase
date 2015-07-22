@@ -50,7 +50,7 @@ Configuration
 You can configure PhraseApp in your settings with these default options::
 
     PHRASE_ENABLED = True
-    PHRASE_AUTH_TOKEN = 'YOUR_AUTH_TOKEN'
+    PHRASE_PROJECT_ID = 'YOUR_AUTH_TOKEN'
     PHRASE_PREFIX = '{{__'
     PHRASE_SUFFIX = '__}}'
 
@@ -61,10 +61,10 @@ PHRASE_ENABLED
 Enable/Disable In-Context-Editing completely and fall back to standard Django i18n handling. Disable PhraseApp for production environments at any time!
 
 *****************
-PHRASE_AUTH_TOKEN
+PHRASE_PROJECT_ID
 *****************
 
-Add your project auth token. You find your project auth token on the `project overview page <https://phraseapp.com/projects>`_.
+Add your ProjectID. You find the ProjectID on the `project overview page <https://phraseapp.com/projects>`_.
 
 *************
 PHRASE_PREFIX
