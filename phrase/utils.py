@@ -8,7 +8,7 @@ class PhraseDelegate:
     def __init__(self, name):
         self.name = name
 
-    def __str__(self):
+    def __unicode__(self):
         logger.info("Rendering PhraseApp Key: %s" % (self.name))
         return self.__normalized_name()
 
