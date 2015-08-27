@@ -1,9 +1,11 @@
 from phrase import settings as phrase_settings
+from django.utils.encoding import python_2_unicode_compatible
 
 import logging
 
 logger = logging.getLogger(__name__)
 
+@python_2_unicode_compatible
 class PhraseDelegate:
     def __init__(self, name):
         self.name = name
