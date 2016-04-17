@@ -5,6 +5,7 @@ from django.template.base import TOKEN_TEXT, TOKEN_VAR
 from django.template.defaulttags import token_kwargs
 from django.conf import settings
 from django.utils import translation
+from django.utils.html import mark_safe
 from django.templatetags.i18n import BlockTranslateNode, TranslateNode
 
 from phrase import settings as phrase_settings
@@ -164,17 +165,21 @@ def do_block_translate(parser, token):
 
 @register.simple_tag
 def phrase_javascript():
-    protocol = 'https://' if phrase_settings.PHRASE_JS_USE_SSL else 'http://'
-    host = phrase_settings.PHRASE_JS_HOST
-    html = "<script> \
-    window.PHRASEAPP_CONFIG = { \
-    projectId: '" + phrase_settings.PHRASE_PROJECT_ID + "' \
-    };\
-    (function() { \
-    var phraseapp = document.createElement('script'); phraseapp.type = 'text/javascript'; phraseapp.async = true; \
-    phraseapp.src = ['" + protocol + "', '" + host + "/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join(''); \
+    if not phrase_settings.PHRASE_ENABLED:
+        return ''
+    html = """<script>
+    window.PHRASEAPP_CONFIG = { projectId: '%(project_id)s' };
+    (function() {
+    var phraseapp = document.createElement('script');
+    phraseapp.type = 'text/javascript';
+    phraseapp.async = true;
+    phraseapp.src = ['%(protocol)s', '%(host)s/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join('');
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phraseapp, s); \
-    })(); \
-    </script>"
-
-    return html
+    })();
+    </script>"""
+    formatted_html = html % dict(
+        project_id=phrase_settings.PHRASE_PROJECT_ID,
+        protocol='https://' if phrase_settings.PHRASE_JS_USE_SSL else 'http://',
+        host=phrase_settings.PHRASE_JS_HOST,
+        )
+    return mark_safe(formatted_html)
