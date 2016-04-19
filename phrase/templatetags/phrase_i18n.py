@@ -168,14 +168,16 @@ def phrase_javascript():
     if not phrase_settings.PHRASE_ENABLED:
         return ''
     html = """<script>
-    window.PHRASEAPP_CONFIG = { projectId: '%(project_id)s' };
+    window.PHRASEAPP_CONFIG = {
+        projectId: '%(project_id)s',
+        autoLowercase :false,
+        };
     (function() {
-    var phraseapp = document.createElement('script');
-    phraseapp.type = 'text/javascript';
-    phraseapp.autoLowercase = false;
-    phraseapp.async = true;
-    phraseapp.src = ['%(protocol)s', '%(host)s/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join('');
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phraseapp, s); \
+    var phrasejs = document.createElement('script');
+    phrasejs.type = 'text/javascript';
+    phrasejs.async = true;
+    phrasejs.src = ['%(protocol)s', '%(host)s/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join('');
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phrasejs, s); \
     })();
     </script>"""
     formatted_html = html % dict(
