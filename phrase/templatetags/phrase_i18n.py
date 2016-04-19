@@ -172,6 +172,7 @@ def phrase_javascript():
     (function() {
     var phraseapp = document.createElement('script');
     phraseapp.type = 'text/javascript';
+    phraseapp.autoLowercase = false;
     phraseapp.async = true;
     phraseapp.src = ['%(protocol)s', '%(host)s/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join('');
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phraseapp, s); \
