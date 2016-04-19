@@ -99,5 +99,5 @@ class PhraseTranslateNode(Node):
             context[self.asvar] = PhraseDelegate(value)
             return ''
         else:
-            delegate = PhraseDelegate(value)
+            delegate = PhraseDelegate(self.filter_expression.var)
             return delegate

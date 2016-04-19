@@ -20,6 +20,7 @@ class PhraseDelegate:
 
     def __safe_name(self):
         name = self.name
+        name = str(name.literal)
         name = name.replace("<", "[[[[[[html_open]]]]]]")
         name = name.replace(">", "[[[[[[html_close]]]]]]")
         return name
