@@ -8,12 +8,12 @@ This adapter lets you connect your Django_ application to PhraseApp and integrat
 
 .. _PhraseApp: https://phraseapp.com
 .. _Django: https://www.djangoproject.com
-.. _In-Context-Editor: https://phraseapp.com/features/
+.. _In-Context-Editor: https://phraseapp.com/docs/guides/in-context-editor
 
 How does it work?
 -----------------
 
-django-phrase provides In-Context translating facilities to your Django app by hooking into `i18n template tags`_.
+django-phrase provides In-Context translating facilities to your Django app by hooking into i18n template tags.
 
 It exposes the underlying key names to the In-Context Editor that is provided by PhraseApp.
 
@@ -85,7 +85,6 @@ More Information
 * Documentation_
 * Support_
 
-.. _i18n template tags: https://docs.djangoproject.com/en/1.5/topics/i18n/translation/#internationalization-in-template-code
 .. _Signup: https://phraseapp.com/signup
-.. _Documentation: http://docs.phraseapp.com/
+.. _Documentation: https://phraseapp.com/docs
 .. _Support: https://phraseapp.com/contact
