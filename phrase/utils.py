@@ -19,8 +19,15 @@ class PhraseDelegate:
         return normalized
 
     def __safe_name(self):
-        name = self.name
-        name = str(name.literal)
+        name = self.__safer_name()
         name = name.replace("<", "[[[[[[html_open]]]]]]")
         name = name.replace(">", "[[[[[[html_close]]]]]]")
         return name
+
+    def __safer_name(self):
+        if type(self.name) is unicode:
+          return str(self.name)
+        elif type(self.name) is str:
+          return str(self.name)
+        else:
+          return str(self.name.literal)
