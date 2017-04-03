@@ -11,13 +11,14 @@ from phrase.utils import PhraseDelegate
 
 class PhraseBlockTranslateNode(Node):
     def __init__(self, extra_context, singular, plural=None, countervar=None,
-            counter=None, message_context=None):
+            counter=None, message_context=None, trimmed=None):
         self.extra_context = extra_context
         self.singular = singular
         self.plural = plural
         self.countervar = countervar
         self.counter = counter
         self.message_context = message_context
+        self.trimmed = trimmed
 
     def render_token_list(self, tokens):
         result = []
@@ -57,7 +58,7 @@ class PhraseBlockTranslateNode(Node):
                 result = translation.pgettext(message_context, singular)
             else:
                 # result = translation.ugettext(singular)
-                result = PhraseDelegate(singular)
+                result = PhraseDelegate(singular, self.trimmed)
         default_value = settings.TEMPLATE_STRING_IF_INVALID
         render_value = lambda v: render_value_in_context(
             context.get(v, default_value), context)
@@ -79,7 +80,7 @@ class PhraseBlockTranslateNode(Node):
 
 class PhraseTranslateNode(Node):
     def __init__(self, filter_expression, noop, asvar=None,
-                 message_context=None):
+                 message_context=None, trimmed=None):
         self.noop = noop
         self.asvar = asvar
         self.message_context = message_context
@@ -87,6 +88,7 @@ class PhraseTranslateNode(Node):
         if isinstance(self.filter_expression.var, six.string_types):
             self.filter_expression.var = Variable("'%s'" %
                                                   self.filter_expression.var)
+        self.trimmed = trimmed
 
     def render(self, context):
         self.filter_expression.var.translate = not self.noop
@@ -96,8 +98,8 @@ class PhraseTranslateNode(Node):
         output = self.filter_expression.resolve(context)
         value = render_value_in_context(output, context)
         if self.asvar:
-            context[self.asvar] = PhraseDelegate(value)
+            context[self.asvar] = PhraseDelegate(value, self.trimmed)
             return ''
         else:
-            delegate = PhraseDelegate(self.filter_expression.var)
+            delegate = PhraseDelegate(self.filter_expression.var, self.trimmed)
             return delegate

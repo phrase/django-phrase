@@ -121,9 +121,13 @@ def do_block_translate(parser, token):
             except Exception:
                 msg = ('"context" in %r tag expected exactly one argument.') % bits[0]
                 six.reraise(TemplateSyntaxError, TemplateSyntaxError(msg), sys.exc_info()[2])
+        elif option == "trimmed":
+          value = True
         else:
             raise TemplateSyntaxError('Unknown argument for %r tag: %r.' % (bits[0], option))
         options[option] = value
+
+    trimmed = options.get("trimmed", False)
 
     if 'count' in options:
         countervar, counter = list(six.iteritems(options['count']))[0]
@@ -157,9 +161,9 @@ def do_block_translate(parser, token):
         raise TemplateSyntaxError("'blocktrans' doesn't allow other block tags (seen %r) inside it" % token.contents)
 
     if phrase_settings.PHRASE_ENABLED:
-        node = PhraseBlockTranslateNode(extra_context, singular, plural, countervar, counter, message_context)
+        node = PhraseBlockTranslateNode(extra_context, singular, plural, countervar, counter, message_context, trimmed)
     else:
-        node = BlockTranslateNode(extra_context, singular, plural, countervar, counter, message_context)
+        node = BlockTranslateNode(extra_context, singular, plural, countervar, counter, message_context, trimmed=trimmed)
 
     return node
 

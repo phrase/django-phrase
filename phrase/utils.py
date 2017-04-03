@@ -7,12 +7,16 @@ logger = logging.getLogger(__name__)
 
 @python_2_unicode_compatible
 class PhraseDelegate:
-    def __init__(self, name):
+    def __init__(self, name, trimmed=False):
         self.name = name
+        self.trimmed = trimmed
 
     def __str__(self):
         logger.info("Rendering PhraseApp Key: %s" % (self.name))
-        return self.__normalized_name()
+        tmp_name = self.__normalized_name()
+        if self.trimmed:
+          tmp_name = tmp_name.strip()
+        return tmp_name
 
     def __normalized_name(self):
         normalized = "%sphrase_%s%s" % (phrase_settings.PHRASE_PREFIX, self.__safe_name(), phrase_settings.PHRASE_SUFFIX)
