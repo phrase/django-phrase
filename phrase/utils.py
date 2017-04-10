@@ -14,8 +14,6 @@ class PhraseDelegate:
     def __str__(self):
         logger.info("Rendering PhraseApp Key: %s" % (self.name))
         tmp_name = self.__normalized_name()
-        if self.trimmed:
-          tmp_name = tmp_name.strip()
         return tmp_name
 
     def __normalized_name(self):
@@ -24,6 +22,7 @@ class PhraseDelegate:
 
     def __safe_name(self):
         name = self.__safer_name()
+        name = name.strip()
         name = name.replace("<", "[[[[[[html_open]]]]]]")
         name = name.replace(">", "[[[[[[html_close]]]]]]")
         return name
