@@ -25,7 +25,7 @@ class PhraseBlockTranslateNode(Node):
         vars = []
         for token in tokens:
             if token.token_type == TOKEN_TEXT:
-                result.append(token.contents.replace('%', '%%'))
+                result.append(token.contents)
             elif token.token_type == TOKEN_VAR:
                 result.append('%%(%s)s' % token.contents)
                 vars.append(token.contents)
