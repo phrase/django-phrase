@@ -6,6 +6,7 @@ except ImportError:
 from django.template.base import TOKEN_TEXT, TOKEN_VAR
 from django.utils import six
 from django.conf import settings
+from phrase.settings import template_string_if_valid
 
 from phrase.utils import PhraseDelegate
 
@@ -59,9 +60,8 @@ class PhraseBlockTranslateNode(Node):
             else:
                 # result = translation.ugettext(singular)
                 result = PhraseDelegate(singular, self.trimmed)
-        default_value = settings.TEMPLATE_STRING_IF_INVALID
         render_value = lambda v: render_value_in_context(
-            context.get(v, default_value), context)
+            context.get(v, template_string_if_valid()), context)
         data = dict([(v, render_value(v)) for v in vars])
         context.pop()
 
