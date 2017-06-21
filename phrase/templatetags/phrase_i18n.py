@@ -4,7 +4,7 @@ from django.template.base import Parser as TokenParser
 from django.template.base import TOKEN_TEXT, TOKEN_VAR
 from django.template.defaulttags import token_kwargs
 from django.conf import settings
-from django.utils import translation
+from django.utils import six, translation
 from django.utils.html import mark_safe
 from django.templatetags.i18n import BlockTranslateNode, TranslateNode
 
@@ -15,6 +15,7 @@ import logging
 import re
 
 register = template.Library()
+
 
 @register.tag("trans")
 def do_translate(parser, token):
@@ -96,6 +97,7 @@ def do_translate(parser, token):
     else:
         return TranslateNode(message_string, noop, asvar, message_context)
 
+
 @register.tag("blocktrans")
 def do_block_translate(parser, token):
     bits = token.split_contents()
@@ -166,6 +168,7 @@ def do_block_translate(parser, token):
         node = BlockTranslateNode(extra_context, singular, plural, countervar, counter, message_context, trimmed=trimmed)
 
     return node
+
 
 @register.simple_tag
 def phrase_javascript():

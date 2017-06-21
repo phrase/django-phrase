@@ -9,7 +9,7 @@ PHRASE_JS_USE_SSL = getattr(settings, 'PHRASE_JS_USE_SSL', True)
 
 
 def template_string_if_valid():
-    try: # does not throw an exception as of 1.11 yet
+    try:  # does not throw an exception as of 1.11 yet
         value = settings.TEMPLATE_STRING_IF_INVALID
         if value:
             return value
