@@ -4,7 +4,7 @@ try:
 except ImportError:
     from django.template.base import _render_value_in_context as render_value_in_context
 from django.template.base import TOKEN_TEXT, TOKEN_VAR
-from django.utils import six
+from django.utils import six, translation
 from django.conf import settings
 from phrase.settings import template_string_if_valid
 
