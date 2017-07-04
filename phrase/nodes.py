@@ -10,6 +10,7 @@ from phrase.settings import template_string_if_valid
 
 from phrase.utils import PhraseDelegate
 
+
 class PhraseBlockTranslateNode(Node):
     def __init__(self, extra_context, singular, plural=None, countervar=None,
             counter=None, message_context=None, trimmed=None):
