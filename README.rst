@@ -8,7 +8,7 @@ This adapter lets you connect your Django_ application to PhraseApp and integrat
 
 .. _PhraseApp: https://phraseapp.com
 .. _Django: https://www.djangoproject.com
-.. _In-Context-Editor: https://phraseapp.com/docs/guides/in-context-editor
+.. _In-Context-Editor: https://help.phraseapp.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website
 
 How does it work?
 -----------------
@@ -86,5 +86,5 @@ More Information
 * Support_
 
 .. _Signup: https://phraseapp.com/signup
-.. _Documentation: https://phraseapp.com/docs
+.. _Documentation: https://help.phraseapp.com/
 .. _Support: https://phraseapp.com/contact
