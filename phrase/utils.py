@@ -1,5 +1,6 @@
 from phrase import settings as phrase_settings
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.six import text_type
 
 import logging
 
@@ -28,9 +29,7 @@ class PhraseDelegate:
         return name
 
     def __safer_name(self):
-        if type(self.name) is unicode:
-          return str(self.name)
-        elif type(self.name) is str:
-          return str(self.name)
+        if type(self.name) is text_type:
+          return text_type(self.name)
         else:
-          return str(self.name.literal)
+          return text_type(self.name.literal)
