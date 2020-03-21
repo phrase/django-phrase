@@ -3,8 +3,8 @@ try:
     from django.template.base import render_value_in_context
 except ImportError:
     from django.template.base import _render_value_in_context as render_value_in_context
-from django.template.base import TOKEN_TEXT, TOKEN_VAR
-from django.utils import six, translation
+from phrase.compat import TOKEN_TEXT, TOKEN_VAR, is_string_type
+from django.utils import translation
 from django.conf import settings
 from phrase.settings import template_string_if_valid
 
@@ -86,7 +86,7 @@ class PhraseTranslateNode(Node):
         self.asvar = asvar
         self.message_context = message_context
         self.filter_expression = filter_expression
-        if isinstance(self.filter_expression.var, six.string_types):
+        if is_string_type(self.filter_expression.var):
             self.filter_expression.var = Variable("'%s'" %
                                                   self.filter_expression.var)
         self.trimmed = trimmed

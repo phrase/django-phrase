@@ -23,4 +23,5 @@ setup(
         'Topic :: Software Development :: Internationalization',
         'Topic :: Software Development :: Localization',
     ],
+    install_requires=['six'],
 )
