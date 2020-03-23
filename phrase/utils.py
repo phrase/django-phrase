@@ -1,6 +1,6 @@
 from phrase import settings as phrase_settings
-from django.utils.encoding import python_2_unicode_compatible
-from django.utils.six import text_type
+from six import python_2_unicode_compatible
+from six import text_type
 
 import logging
 

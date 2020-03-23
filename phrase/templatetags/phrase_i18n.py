@@ -1,10 +1,11 @@
 from django import template
 from django.template import (Node, Variable, TemplateSyntaxError, Library)
 from django.template.base import Parser as TokenParser
-from django.template.base import TOKEN_TEXT, TOKEN_VAR
+from phrase.compat import TOKEN_TEXT, TOKEN_VAR
 from django.template.defaulttags import token_kwargs
 from django.conf import settings
-from django.utils import six, translation
+from django.utils import translation
+from six import reraise
 from django.utils.html import mark_safe
 from django.templatetags.i18n import BlockTranslateNode, TranslateNode
 
@@ -70,7 +71,7 @@ def do_translate(parser, token):
                 value = remaining.pop(0)
             except IndexError:
                 msg = "No argument provided to the '%s' tag for the context option." % bits[0]
-                six.reraise(TemplateSyntaxError, TemplateSyntaxError(msg), sys.exc_info()[2])
+                reraise(TemplateSyntaxError, TemplateSyntaxError(msg), sys.exc_info()[2])
             if value in invalid_context:
                 raise TemplateSyntaxError(
                     "Invalid argument '%s' provided to the '%s' tag for the context option" % (value, bits[0]),
@@ -81,7 +82,7 @@ def do_translate(parser, token):
                 value = remaining.pop(0)
             except IndexError:
                 msg = "No argument provided to the '%s' tag for the as option." % bits[0]
-                six.reraise(TemplateSyntaxError, TemplateSyntaxError(msg), sys.exc_info()[2])
+                reraise(TemplateSyntaxError, TemplateSyntaxError(msg), sys.exc_info()[2])
             asvar = value
         else:
             raise TemplateSyntaxError(
@@ -122,7 +123,7 @@ def do_block_translate(parser, token):
                 value = parser.compile_filter(value)
             except Exception:
                 msg = ('"context" in %r tag expected exactly one argument.') % bits[0]
-                six.reraise(TemplateSyntaxError, TemplateSyntaxError(msg), sys.exc_info()[2])
+                reraise(TemplateSyntaxError, TemplateSyntaxError(msg), sys.exc_info()[2])
         elif option == "trimmed":
           value = True
         else:
