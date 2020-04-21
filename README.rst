@@ -47,7 +47,7 @@ Last step: add the JavaScript snippet to your base layout file with the followin
 Configuration
 -------------
 
-You can configure the In-Context Editor in your settings with these options:
+You can configure the In-Context Editor in your settings with these options::
 
     PHRASE_ENABLED = True
     PHRASE_PROJECT_ID = 'YOUR_PROJECT_ID'
