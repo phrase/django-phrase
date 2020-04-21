@@ -2,22 +2,22 @@
 django-phrase
 =============
 
-PhraseApp_ is the translation management solution for web and mobile applications. Collaborate with your team, find professional translators and stay on top of the process.
+Phrase_ is the translation management solution for web and mobile applications. Collaborate with your team, find professional translators and stay on top of the process.
 
-This adapter lets you connect your Django_ application to PhraseApp and integrate the powerful In-Context-Editor_ into your apps.
+This adapter lets you connect your Django_ application to Phrase and integrate the powerful In-Context-Editor_ into your apps.
 
-.. _PhraseApp: https://phraseapp.com
+.. _Phrase: https://phrase.com
 .. _Django: https://www.djangoproject.com
-.. _In-Context-Editor: https://help.phraseapp.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website
+.. _In-Context-Editor: https://help.phrase.com/help/translate-directly-on-your-website
 
 How does it work?
 -----------------
 
 django-phrase provides In-Context translating facilities to your Django app by hooking into i18n template tags.
 
-It exposes the underlying key names to the In-Context Editor that is provided by PhraseApp.
+It exposes the underlying key names to the In-Context Editor that is provided by Phrase.
 
-To get started with PhraseApp you need to `sign up for a free account <https://phraseapp.com/signup>`_.
+To get started with Phrase you need to `sign up for a free account <https://phrase.com/signup>`_.
 
 
 Installation
@@ -47,7 +47,7 @@ Last step: add the JavaScript snippet to your base layout file with the followin
 Configuration
 -------------
 
-You can configure the In-Context Editor in your settings with these options::
+You can configure the In-Context Editor in your settings with these options:
 
     PHRASE_ENABLED = True
     PHRASE_PROJECT_ID = 'YOUR_PROJECT_ID'
@@ -64,7 +64,7 @@ Enable/Disable In-Context Editor completely and fall back to standard Django i18
 PHRASE_PROJECT_ID
 *****************
 
-Add your ProjectID. You find the Project ID on the `projects overview page <https://phraseapp.com/projects>`_.
+Add your ProjectID. You find the Project ID on the `projects overview page <https://app.phrase.com/projects>`_.
 
 *************
 PHRASE_PREFIX
@@ -85,6 +85,6 @@ More Information
 * Documentation_
 * Support_
 
-.. _Signup: https://phraseapp.com/signup
-.. _Documentation: https://help.phraseapp.com/
-.. _Support: https://phraseapp.com/contact
+.. _Signup: https://phrase.com/signup
+.. _Documentation: https://help.phrase.com/
+.. _Support: https://phrase.com/contact
