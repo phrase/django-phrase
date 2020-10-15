@@ -4,10 +4,10 @@ from setuptools import find_packages
 setup(
     name='django-phrase',
     version='1.0.8',
-    description='Connect your Django apps to PhraseApp, the powerful in-context-translation solution.',
+    description='Connect your Django apps to Phrase, the powerful in-context-translation solution.',
     long_description=open('README.rst').read(),
     author='Dynport GmbH',
-    author_email='info@phraseapp.com',
+    author_email='info@phrase.com',
     url='https://github.com/phrase/django-phrase',
     download_url='https://github.com/phrase/django-phrase',
     license='MIT',
