@@ -13,7 +13,7 @@ class PhraseDelegate:
         self.trimmed = trimmed
 
     def __str__(self):
-        logger.info("Rendering PhraseApp Key: %s" % (self.name))
+        logger.info("Rendering Phrase Key: %s" % (self.name))
         tmp_name = self.__normalized_name()
         return tmp_name
 
