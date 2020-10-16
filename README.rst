@@ -76,7 +76,7 @@ Change the prefix and suffix of the keys that are rendered by the In-Context Edi
 Heroku and .mo Files
 ********************
 
-If you are using the current global gitignore file for python https://github.com/github/gitignore/blob/master/Python.gitignore be warned that your compiled .mo files are ignored as well. That means that your translations will not appear on Heroku. If you want this not to happen or having issues with this simply comment out your *.mo ignore rule. Then run your compilemessages locally and include them into your sourcetree before pushing to Heroku.
+If you are using the current global gitignore file for python https://github.com/github/gitignore/blob/master/Python.gitignore be warned that your compiled .mo files are ignored as well. That means that your translations will not appear on Heroku. If you want this not to happen or having issues with this simply comment out your \*.mo ignore rule. Then run your compilemessages locally and include them into your sourcetree before pushing to Heroku.
 
 More Information
 ----------------
