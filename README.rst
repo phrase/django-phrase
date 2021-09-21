@@ -88,3 +88,7 @@ More Information
 .. _Signup: https://phrase.com/signup
 .. _Documentation: https://help.phrase.com/
 .. _Support: https://phrase.com/contact
+
+## Get help / support
+
+Please contact [support@phrase.com](mailto:support@phrase.com?subject=[GitHub]%20) and we can take more direct action toward finding a solution.
