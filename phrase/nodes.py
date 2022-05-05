@@ -60,7 +60,7 @@ class PhraseBlockTranslateNode(Node):
                 result = translation.pgettext(message_context, singular)
             else:
                 # result = translation.ugettext(singular)
-                result = PhraseDelegate(singular, self.trimmed)
+                result = str(PhraseDelegate(singular, self.trimmed))
         render_value = lambda v: render_value_in_context(
             context.get(v, template_string_if_valid()), context)
         data = dict([(v, render_value(v)) for v in vars])
@@ -99,8 +99,7 @@ class PhraseTranslateNode(Node):
         output = self.filter_expression.resolve(context)
         value = render_value_in_context(output, context)
         if self.asvar:
-            context[self.asvar] = PhraseDelegate(value, self.trimmed)
+            context[self.asvar] = str(PhraseDelegate(value, self.trimmed))
             return ''
         else:
-            delegate = PhraseDelegate(self.filter_expression.var, self.trimmed)
-            return delegate
+            return str(PhraseDelegate(self.filter_expression.var, self.trimmed))
