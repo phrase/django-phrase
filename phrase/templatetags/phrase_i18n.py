@@ -18,6 +18,7 @@ import re
 register = template.Library()
 
 
+@register.tag("translate")
 @register.tag("trans")
 def do_translate(parser, token):
     """
