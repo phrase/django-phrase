@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 setup(
     name='django-phrase',
-    version='1.0.8',
+    version='1.1.0',
     description='Connect your Django apps to Phrase, the powerful in-context-translation solution.',
     long_description=open('README.rst').read(),
     author='Dynport GmbH',
