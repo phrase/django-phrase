@@ -216,19 +216,19 @@ def phrase_javascript():
     html = """<script>
     window.PHRASEAPP_CONFIG = {
         projectId: '%(project_id)s',
+        projectId: '%(account_id)s',
         autoLowercase :false,
         };
     (function() {
     var phrasejs = document.createElement('script');
-    phrasejs.type = 'text/javascript';
+    phrasejs.type = 'module';
     phrasejs.async = true;
-    phrasejs.src = ['%(protocol)s', '%(host)s/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join('');
+    phrasejs.src = 'https://d2bgdldl6xit7z.cloudfront.net/latest/ice/index.js'
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phrasejs, s); \
     })();
     </script>"""
     formatted_html = html % dict(
         project_id=phrase_settings.PHRASE_PROJECT_ID,
-        protocol="https://" if phrase_settings.PHRASE_JS_USE_SSL else "http://",
-        host=phrase_settings.PHRASE_JS_HOST,
+        account_id=phrase_settings.PHRASE_ACCOUNT_ID,
     )
     return mark_safe(formatted_html)
