@@ -215,8 +215,8 @@ def phrase_javascript():
         return ""
     html = """<script>
     window.PHRASEAPP_CONFIG = {
+        accountId: '%(account_id)s',
         projectId: '%(project_id)s',
-        projectId: '%(account_id)s',
         autoLowercase :false,
         };
     (function() {
