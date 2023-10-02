@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0", "six"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-phrase"
+version = "2.0.0"
+authors = [
+  { name="Phrase", email="info@phrase.com" },
+]
+description = "Connect your Django apps to Phrase with the powerful in-context-translation solution."
+readme = "README.md"
+requires-python = ">=3.0.0"
+classifiers = [
+        "Environment :: Web Environment",
+        "Framework :: Django",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Software Development :: Internationalization",
+        "Topic :: Software Development :: Localization",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/phrase/django-phrase"
+"Bug Tracker" = "https://github.com/phrase/django-phrase/issues"
