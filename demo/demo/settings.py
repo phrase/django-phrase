@@ -114,7 +114,7 @@ LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 
 USE_I18N = True
-# USE_L10N = True
+
 USE_TZ = True
 
 
@@ -129,8 +129,10 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
+# Phrase In-Context Editor settings
 PHRASE_ENABLED = True
 PHRASE_ACCOUNT_ID = "0bed59e5"  # Set your own account id
 PHRASE_PROJECT_ID = "00000000000000004158e0858d2fa45c"  # Set your own project id
+PHRASE_DATACENTER = "eu"
 PHRASE_PREFIX = "{{__"
 PHRASE_SUFFIX = "__}}"

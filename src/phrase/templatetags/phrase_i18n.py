@@ -217,6 +217,7 @@ def phrase_javascript():
     window.PHRASEAPP_CONFIG = {
         accountId: '%(account_id)s',
         projectId: '%(project_id)s',
+        datacenter: '%(datacenter)s',
         autoLowercase :false,
         };
     (function() {
@@ -230,5 +231,6 @@ def phrase_javascript():
     formatted_html = html % dict(
         project_id=phrase_settings.PHRASE_PROJECT_ID,
         account_id=phrase_settings.PHRASE_ACCOUNT_ID,
+        datacenter=phrase_settings.PHRASE_DATACENTER,
     )
     return mark_safe(formatted_html)

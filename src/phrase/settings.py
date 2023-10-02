@@ -3,6 +3,7 @@ from django.conf import settings
 PHRASE_ENABLED = getattr(settings, "PHRASE_ENABLED", True)
 PHRASE_ACCOUNT_ID = getattr(settings, "PHRASE_ACCOUNT_ID", "")
 PHRASE_PROJECT_ID = getattr(settings, "PHRASE_PROJECT_ID", "")
+PHRASE_DATACENTER = getattr(settings, "PHRASE_DATACENTER", "")
 PHRASE_PREFIX = getattr(settings, "PHRASE_PREFIX", "{{__")
 PHRASE_SUFFIX = getattr(settings, "PHRASE_SUFFIX", "__}}")
 
