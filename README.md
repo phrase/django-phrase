@@ -50,6 +50,7 @@ Configuration
 You can configure the In-Context Editor in your settings with these options::
 
     PHRASE_ENABLED = True
+    PHRASE_ACCOUNT_ID = 'YOUR_ACCOUNT_ID'
     PHRASE_PROJECT_ID = 'YOUR_PROJECT_ID'
     PHRASE_PREFIX = '{{__'
     PHRASE_SUFFIX = '__}}'

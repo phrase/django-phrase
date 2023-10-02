@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-02 11:32+0200\n"
+"POT-Creation-Date: 2023-10-02 14:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/index.html:11
-msgid "WelcomeHeading"
-msgstr "Welcome to In-Context Editor demo for Django"
+#: ice_demo/templates/index.html:11
+msgid "hero_title"
+msgstr "Translate a Website While Looking at It"
 
-#: templates/index.html:12
-msgid "WelcomeMessage"
-msgstr "This demo shows you how you can integrate the In-Context Editor with your Django site."
+#: ice_demo/templates/index.html:12
+msgid "advantages_text"
+msgstr ""
+"With the In-context Editor, clients like Fair Trade and Jimdo are able to "
+"minimize errors by giving translators insight into the context of the "
+"translation and letting them edit the content right on the spot."
+
+#: ice_demo/templates/index.html:13
+msgid "integrate_title"
+msgstr "Integrate the Phrase In-context Editor into your existing application"
+
+#: ice_demo/templates/index.html:14
+msgid "create_this_key"
+msgstr "Create this key"
+
+#: ice_demo/templates/index.html:15
+msgid "integrate_text"
+msgstr ""
+"The Phrase In-context Editor can be integrated within almost any web "
+"application and provides you with the ability to translate content directly "
+"on your site. Now, you’re able to see the translations right where they "
+"belong."
