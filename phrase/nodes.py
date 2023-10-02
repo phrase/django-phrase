@@ -1,19 +1,25 @@
-from django.template import (Node, Variable, TemplateSyntaxError, Library)
 try:
     from django.template.base import render_value_in_context
 except ImportError:
     from django.template.base import _render_value_in_context as render_value_in_context
-from phrase.compat import TOKEN_TEXT, TOKEN_VAR, is_string_type
+from django.template import Node, Variable
 from django.utils import translation
-from django.conf import settings
+from phrase.compat import TOKEN_TEXT, TOKEN_VAR, is_string_type
 from phrase.settings import template_string_if_valid
-
 from phrase.utils import PhraseDelegate
 
 
 class PhraseBlockTranslateNode(Node):
-    def __init__(self, extra_context, singular, plural=None, countervar=None,
-            counter=None, message_context=None, trimmed=None):
+    def __init__(
+        self,
+        extra_context,
+        singular,
+        plural=None,
+        countervar=None,
+        counter=None,
+        message_context=None,
+        trimmed=None,
+    ):
         self.extra_context = extra_context
         self.singular = singular
         self.plural = plural
@@ -29,9 +35,9 @@ class PhraseBlockTranslateNode(Node):
             if token.token_type == TOKEN_TEXT:
                 result.append(token.contents)
             elif token.token_type == TOKEN_VAR:
-                result.append('%%(%s)s' % token.contents)
+                result.append("%%(%s)s" % token.contents)
                 vars.append(token.contents)
-        return ''.join(result), vars
+        return "".join(result), vars
 
     def render(self, context, nested=False):
         if self.message_context:
@@ -50,8 +56,7 @@ class PhraseBlockTranslateNode(Node):
             context[self.countervar] = count
             plural, plural_vars = self.render_token_list(self.plural)
             if message_context:
-                result = translation.npgettext(message_context, singular,
-                                               plural, count)
+                result = translation.npgettext(message_context, singular, plural, count)
             else:
                 result = translation.ungettext(singular, plural, count)
             vars.extend(plural_vars)
@@ -62,7 +67,8 @@ class PhraseBlockTranslateNode(Node):
                 # result = translation.ugettext(singular)
                 result = str(PhraseDelegate(singular, self.trimmed))
         render_value = lambda v: render_value_in_context(
-            context.get(v, template_string_if_valid()), context)
+            context.get(v, template_string_if_valid()), context
+        )
         data = dict([(v, render_value(v)) for v in vars])
         context.pop()
 
@@ -79,27 +85,29 @@ class PhraseBlockTranslateNode(Node):
 
         return result
 
+
 class PhraseTranslateNode(Node):
-    def __init__(self, filter_expression, noop, asvar=None,
-                 message_context=None, trimmed=None):
+    def __init__(
+        self, filter_expression, noop, asvar=None, message_context=None, trimmed=None
+    ):
         self.noop = noop
         self.asvar = asvar
         self.message_context = message_context
         self.filter_expression = filter_expression
         if is_string_type(self.filter_expression.var):
-            self.filter_expression.var = Variable("'%s'" %
-                                                  self.filter_expression.var)
+            self.filter_expression.var = Variable("'%s'" % self.filter_expression.var)
         self.trimmed = trimmed
 
     def render(self, context):
         self.filter_expression.var.translate = not self.noop
         if self.message_context:
-            self.filter_expression.var.message_context = (
-                self.message_context.resolve(context))
+            self.filter_expression.var.message_context = self.message_context.resolve(
+                context
+            )
         output = self.filter_expression.resolve(context)
         value = render_value_in_context(output, context)
         if self.asvar:
             context[self.asvar] = str(PhraseDelegate(value, self.trimmed))
-            return ''
+            return ""
         else:
             return str(PhraseDelegate(self.filter_expression.var, self.trimmed))
