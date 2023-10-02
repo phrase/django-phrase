@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en_US">
+
+<head>
+    {% load i18n %}
+    {% load phrase_i18n %}
+    {% phrase_javascript %}
+
+    {% block title %}
+    <title>In-Context Editor Demo</title>
+    {% endblock %}
+</head>
+
+<body>
+    {% block sidebar %}
+    <!-- insert default navigation text for every page -->
+    {% endblock %}
+    {% block content %}
+    <!-- default content text (typically empty) -->
+    {% endblock %}
+</body>
+
+</html>
