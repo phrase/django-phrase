@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0", "six"]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -10,7 +10,7 @@ authors = [
 ]
 description = "Connect your Django apps to Phrase with the powerful in-context-translation solution."
 readme = "README.md"
-requires-python = ">=3.0.0"
+requires-python = ">=3.6"
 classifiers = [
         "Environment :: Web Environment",
         "Framework :: Django",
@@ -21,6 +21,10 @@ classifiers = [
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Software Development :: Internationalization",
         "Topic :: Software Development :: Localization",
+]
+dependencies = [
+    "django",
+    "six == 1.16.0",
 ]
 
 [project.urls]
