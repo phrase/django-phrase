@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% load phrase_i18n %}
+
+{% block content %}
+<h2>This is a simple demo of the Django integration for the In-Context Editor</h2>
+<b>Find me in demo/ice_demo/templates/index.html</b>
+<p>{% trans 'hero_title' %}</p>
+<p>{% trans 'advantages_text' %}</p>
+<p>{% trans 'integrate_title' %}</p>
+<p>{% trans 'create_this_key' %}</p>
+<p>{% trans 'integrate_text' %}</p>
+{% endblock %}

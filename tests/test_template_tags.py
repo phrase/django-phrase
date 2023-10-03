@@ -18,15 +18,17 @@ class TemplateTagsTest(TestCase):
         self.assertHTMLEqual(
             render_template("{% phrase_javascript %}"),
             """<script>
-    window.PHRASEAPP_CONFIG = {
-        projectId: '',
-        autoLowercase :false,
-        };
-    (function() {
-    var phrasejs = document.createElement('script');
-    phrasejs.type = 'text/javascript';
-    phrasejs.async = true;
-    phrasejs.src = ['https://', 'phraseapp.com/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join('');
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phrasejs, s);     })();
-    </script>""",
+                window.PHRASEAPP_CONFIG = {
+                    accountId: '',
+                    projectId: '',
+                    autoLowercase :false,
+                    };
+                (function() {
+                var phrasejs = document.createElement('script');
+                phrasejs.type = 'module';
+                phrasejs.async = true;
+                phrasejs.src = 'https://d2bgdldl6xit7z.cloudfront.net/latest/ice/index.js'
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phrasejs, s); \
+                })();
+            </script>""",
         )
