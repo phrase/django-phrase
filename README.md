@@ -1,7 +1,5 @@
 # django-phrase
 
-![Build status](https://github.com/phrase/django-phrase/workflows/Test/badge.svg)
-
 **django-phrase** is the official library for integrating [Phrase Strings In-Context Editor](https://support.phrase.com/hc/en-us/articles/5784095916188-In-Context-Editor-Strings) with [Django](https://www.djangoproject.com/)
 
 ## :scroll: Documentation
