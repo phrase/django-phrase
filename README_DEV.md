@@ -5,6 +5,7 @@
 4. `deactivate` Deactivate environment when done developing
 
 ## Releasing a new version of the package
-1. `python -m build`
-2. `twine upload dist/*`
-3. Apply credentials
+1. Bump the version number in `pyproject.toml`
+2. `python -m build`
+3. `twine upload dist/*`
+4. Apply credentials for PyPI
