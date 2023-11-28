@@ -213,21 +213,24 @@ def do_block_translate(parser, token):
 def phrase_javascript():
     if not phrase_settings.PHRASE_ENABLED:
         return ""
-    html = """<script>
-    window.PHRASEAPP_CONFIG = {
-        accountId: '%(account_id)s',
-        projectId: '%(project_id)s',
-        datacenter: '%(datacenter)s',
-        autoLowercase :false,
+    html = """
+    <script>
+        window.PHRASEAPP_CONFIG = {
+            accountId: '%(account_id)s',
+            projectId: '%(project_id)s',
+            datacenter: '%(datacenter)s',
+            autoLowercase: false,
+            origin: 'django-phrase'
         };
-    (function() {
-    var phrasejs = document.createElement('script');
-    phrasejs.type = 'module';
-    phrasejs.async = true;
-    phrasejs.src = 'https://d2bgdldl6xit7z.cloudfront.net/latest/ice/index.js'
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phrasejs, s); \
-    })();
-    </script>"""
+        (function() {
+            var phrasejs = document.createElement('script');
+            phrasejs.type = 'module';
+            phrasejs.async = true;
+            phrasejs.src = 'https://d2bgdldl6xit7z.cloudfront.net/latest/ice/index.js'
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phrasejs, s);
+        })();
+    </script>
+    """
     formatted_html = html % dict(
         project_id=phrase_settings.PHRASE_PROJECT_ID,
         account_id=phrase_settings.PHRASE_ACCOUNT_ID,
