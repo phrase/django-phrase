@@ -1,4 +1,4 @@
-Django==4.2.5
+Django==4.2.24
 six==1.16.0
 twine==4.0.2
 build==1.0.3
